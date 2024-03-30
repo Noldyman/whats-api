@@ -1,0 +1,23 @@
+{
+  "name": "whatsapp-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon src/app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.21",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.1",
+    "joi": "^17.12.2",
+    "puppeteer": "^22.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2"
+  }
+}
