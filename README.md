@@ -16,8 +16,7 @@ This API provides two endpoints:
 - POST `/api/whatsapp` allows you to send messages. The body should have the following format:
 
   ```
-  {
-      {
+    {
       "messages": [
           {
               "phoneNumber": "+31612345678",
@@ -25,8 +24,7 @@ This API provides two endpoints:
               "text": "Very personal message"
           }
       ]
-  }
-  }
+    }
   ```
 
   Make sure the `phoneNumber` uses the correct format and countrycode and the `recipientName` matches the name in your phone exacty (case sensitive), otherwise the message will not be sent.
