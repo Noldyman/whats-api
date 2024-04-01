@@ -3,7 +3,7 @@ import puppeteer, { Browser, Page } from "puppeteer";
 export const openWebWhatsapp = async (): Promise<{ browser: Browser; page: Page }> => {
   try {
     const browser = await puppeteer.launch({
-      // headless: false,
+      headless: false,
       userDataDir: "./user_data",
     });
     const page = await browser.newPage();
