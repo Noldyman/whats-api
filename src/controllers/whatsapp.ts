@@ -6,7 +6,10 @@ import { sendPushNotification } from "../services/pushNotificationService";
 export const authenticate = async (req: Request, res: Response) => {
   const { browser, page } = await openWebWhatsapp();
 
-  if (!showsAuthenticateScreen(page)) res.send("Already authenticated");
+  if (!(await showsAuthenticateScreen(page))) {
+    await browser.close();
+    return res.status(409).send("Already authenticated");
+  }
 
   await page.waitForSelector('canvas[aria-label="Scan me!"]');
   const encodedScreenShot = await page.screenshot({ encoding: "base64" });
