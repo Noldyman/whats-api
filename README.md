@@ -1,4 +1,4 @@
-# Whatsapp API
+# Whats-API
 
 This API allows you to send messages with whatsapp. The API runs an instance of web-whatsapp in a headless browser. It is not an official API provided by Whatsapp, so use it at your own risk.
 
