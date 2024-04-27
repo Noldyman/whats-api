@@ -3,7 +3,7 @@ import { openWebWhatsapp, showsAuthenticateScreen } from "../services/webWhatsap
 import { SendMessagesBody } from "../models/messages";
 import { sendPushNotification } from "../services/pushNotificationService";
 
-export const authenticate = async (req: Request, res: Response) => {
+export const authenticate = async (_: Request, res: Response) => {
   const { browser, page } = await openWebWhatsapp();
 
   if (!(await showsAuthenticateScreen(page))) {
@@ -16,9 +16,10 @@ export const authenticate = async (req: Request, res: Response) => {
 
   res.send(`<img src="data:image/png;base64,${encodedScreenShot}" alt="No QR code" />`);
 
-  await page.waitForNavigation({ timeout: 2 * 60 * 1000 });
-  await page.waitForNetworkIdle();
+  await page.waitForNavigation();
   await browser.close();
+
+  console.log("Authentication complete. Browser has been closed");
 };
 
 export const sendMessages = async (req: Request, res: Response) => {
@@ -56,7 +57,8 @@ export const sendMessages = async (req: Request, res: Response) => {
       `A whatsapp message was sent to: ${messages.map((m) => m.recipientName).join(", ")}.`
     );
     await browser.close();
-    res.send(`${messages.length} messages were sent...`);
+    res.send(`${messages.length} messages were sent.`);
+    console.log(`${messages.length} messages were sent.`);
   } catch (error) {
     console.error("Sending message failed with error:", JSON.stringify(error));
     await browser.close();

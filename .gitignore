@@ -1,4 +1,5 @@
 node_modules
+dist
 user_data
 .env
 .DS_Store
